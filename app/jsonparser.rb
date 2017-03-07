@@ -7,8 +7,8 @@ class JSONParser
     @names = []
     codenames.each do |codename|
       json = {}
-      open(codename + '.json') {|f| json = JSON.parse(f.read) }
-      @packages.concat packages(json,codename)
+      open(codename + '.json') { |f| json = JSON.parse(f.read) }
+      @packages.concat packages(json, codename)
       @names.concat names
     end
   end
@@ -17,7 +17,7 @@ class JSONParser
     return if word.nil?
     results = []
     temp = @names.select { |name| name =~ /#{word}/ }
-    @packages.each {|i| results << i if temp.include?(i.name)}
+    @packages.each { |i| results << i if temp.include?(i.name) }
     results
   end
 
@@ -31,10 +31,10 @@ class JSONParser
     names.uniq!
   end
 
-  def packages(json,codename)
+  def packages(json, codename)
     packages = []
-    json.each do |k, v|
-      v.each do |k1,v1|
+    json.values.each do |v|
+      v.each do |k1, v1|
         v1.each do |i|
           pkg = OpenStruct.new
           pkg.name = i['Package']

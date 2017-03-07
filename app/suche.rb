@@ -14,7 +14,7 @@ class Suche < WEBrick::HTTPServer
     mount('/', WEBrick::HTTPServlet::FileHandler, '../public')
     mount_proc('/search') { |req, resp| search(req, resp, true) }
     mount_proc('/package') { |req, resp| search(req, resp, false) }
-    @searchengine = JSONParser.new(['jessie','stretch'])
+    @searchengine = JSONParser.new(%w(jessie stretch))
   end
 
   def search(request, response, is_html)
@@ -33,9 +33,9 @@ class Suche < WEBrick::HTTPServer
   end
 end
 
-server = Suche.new(:Port => 9000)
+server = Suche.new(Port: 9000)
 
-['INT', 'TERM'].each do |signal|
+%w(INT TERM).each do |signal|
   trap(signal) { server.shutdown }
 end
 
