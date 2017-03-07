@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta http-equiv="Content-Type" content='text/html; charset=UTF-8' />
+    <link rel="stylesheet" href="/css/suche.css" type="text/css" media="screen" charset="utf-8" />
+    <script src="/js/prototype.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/effects.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/controls.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/suche.js" type="text/javascript" charset="utf-8"></script>
+    <title>Debian CN Package Search</title>
+  </head>
+  <body>
+    <h1 class='title'>Debian CN Package Search</h1>
+    <form id='searchForm' action='/search'>
+      <input type="text" id="search" name="search" maxlength='20' value='<%= word %>' />
+      <div id="result" class="autocomplete" style="display: block;">
+        <%= links %>
+      </div>
+    </form>
+  </body>
+</html>
