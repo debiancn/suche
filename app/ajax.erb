@@ -1,1 +1,9 @@
-<ul><li><%= package %></li></ul>
+<ul>
+<% packages.each do |s| -%>
+  <li>
+    <span><%= s.codename %>:</span>
+    <span>软件包：<%= s.name %> (<%= s.section %>): <%= s.description %></span>
+    <span><%= s.version %>: <%= s.arch %>
+  </li>
+<% end -%>
+</ul>
